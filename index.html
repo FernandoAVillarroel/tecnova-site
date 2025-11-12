@@ -47,6 +47,79 @@
             padding: 0 20px;
         }
         
+        /* Digital Particles Background */
+        .digital-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(77, 171, 247, 0.1);
+            border-radius: 50%;
+            animation: float-particle 15s infinite linear;
+        }
+        
+        @keyframes float-particle {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        /* Floating Stars */
+        .floating-stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        /* Digital Grid Background */
+        .digital-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(77, 171, 247, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(77, 171, 247, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
         /* Header */
         header {
             background-color: var(--primary);
@@ -198,6 +271,23 @@
             border: 2px solid var(--accent);
             font-size: 1.1rem;
             box-shadow: 0 5px 15px rgba(77, 171, 247, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: var(--transition);
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
         }
         
         .cta-button:hover {
@@ -225,6 +315,7 @@
         .stats {
             background: var(--white);
             padding: 80px 0;
+            position: relative;
         }
         
         .stats-grid {
@@ -236,6 +327,19 @@
         
         .stat-item {
             padding: 30px 20px;
+            position: relative;
+        }
+        
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
         }
         
         .stat-number {
@@ -334,6 +438,23 @@
             border: 1px solid rgba(255,255,255,0.2);
             transition: var(--transition);
             height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-features .feature-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: var(--transition);
+        }
+        
+        .about-features .feature-box:hover::before {
+            left: 100%;
         }
         
         .about-features .feature-box:hover {
@@ -372,6 +493,7 @@
         .services {
             padding: 100px 0;
             background: var(--light);
+            position: relative;
         }
         
         .services .section-title {
@@ -471,6 +593,7 @@
         .projects {
             padding: 100px 0;
             background: var(--white);
+            position: relative;
         }
         
         .projects .section-title {
@@ -898,6 +1021,15 @@
     </style>
 </head>
 <body>
+    <!-- Digital Particles Background -->
+    <div class="digital-particles" id="particles"></div>
+    
+    <!-- Floating Stars -->
+    <div class="floating-stars" id="stars"></div>
+    
+    <!-- Digital Grid Background -->
+    <div class="digital-grid"></div>
+
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/5493853048290?text=Hola%20Grupo%20Tecnova,%20quiero%20más%20información%20sobre%20sus%20servicios%20de%20desarrollo%20de%20software" 
        class="whatsapp-float" 
@@ -1338,6 +1470,62 @@
                     }
                 });
             });
+        });
+        
+        // Create digital particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size
+                const size = Math.random() * 10 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Create floating stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 20;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random size
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Random position
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Initialize effects
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            createStars();
         });
     </script>
 </body>
