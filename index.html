@@ -940,7 +940,25 @@
             transform: translateX(0);
         }
         
-        /* Responsive */
+        /* ========== RESPONSIVE DESIGN ========== */
+        
+        /* Large Devices (1200px and down) */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 1140px;
+                padding: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.3rem;
+            }
+        }
+        
+        /* Medium Devices (992px and down) */
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 2.8rem;
@@ -949,11 +967,37 @@
             .section-title {
                 font-size: 2.2rem;
             }
+            
+            .hero {
+                padding: 100px 0 80px;
+            }
+            
+            .services-grid, .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
         }
         
+        /* Small Devices (768px and down) */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+            
+            .nav-links.active {
+                display: flex;
             }
             
             .mobile-menu-btn {
@@ -961,7 +1005,7 @@
             }
             
             .hero {
-                padding: 100px 0 80px;
+                padding: 80px 0 60px;
             }
             
             .hero h1 {
@@ -972,18 +1016,59 @@
                 font-size: 1.1rem;
             }
             
+            .rocket-animation {
+                font-size: 60px;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
             .services-grid, .projects-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .stat-item {
+                padding: 20px 15px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .project-categories {
+                gap: 10px;
+            }
+            
+            .category-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
             }
             
             .contact-item {
                 flex-direction: column;
                 text-align: center;
                 gap: 10px;
+                padding: 15px 25px;
             }
             
             .phone {
                 font-size: 1.5rem;
+            }
+            
+            .email {
+                font-size: 1.1rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
             
             .whatsapp-float {
@@ -1001,21 +1086,141 @@
             }
         }
         
+        /* Extra Small Devices (576px and down) */
         @media (max-width: 576px) {
             .hero h1 {
                 font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
             }
             
             .section-title {
                 font-size: 1.8rem;
             }
             
+            .section-description {
+                font-size: 1rem;
+            }
+            
             .cta h2 {
                 font-size: 1.8rem;
             }
             
-            .footer-content {
+            .cta p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-badge {
+                font-size: 12px;
+                padding: 6px 15px;
+            }
+            
+            .rocket-animation {
+                font-size: 50px;
+            }
+            
+            .stats-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .stat-number {
+                font-size: 2.2rem;
+            }
+            
+            .service-card, .feature-box {
+                padding: 25px 20px;
+            }
+            
+            .service-title, .feature-title {
+                font-size: 1.3rem;
+            }
+            
+            .project-image {
+                height: 180px;
+            }
+            
+            .project-content {
+                padding: 20px;
+            }
+            
+            .project-title {
+                font-size: 1.2rem;
+            }
+            
+            .location-badge {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+                padding: 12px 20px;
+            }
+            
+            .location-badge span {
+                font-size: 0.9rem;
+            }
+            
+            .footer-links a {
+                font-size: 0.9rem;
+            }
+            
+            .footer-bottom {
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Very Small Devices (400px and down) */
+        @media (max-width: 400px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .cta-button {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .service-card, .feature-box {
+                padding: 20px 15px;
+            }
+            
+            .project-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .category-btn {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+        
+        /* Orientation-specific adjustments */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                padding: 60px 0 40px;
+                min-height: auto;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .rocket-animation {
+                font-size: 40px;
+                margin-bottom: 15px;
             }
         }
     </style>
@@ -1396,7 +1601,17 @@
         // Mobile menu toggle
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
             const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!navLinks.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
         });
         
         // Smooth scrolling for anchor links
@@ -1415,9 +1630,7 @@
                     });
                     
                     // Close mobile menu after clicking a link
-                    if (window.innerWidth <= 768) {
-                        document.querySelector('.nav-links').style.display = 'none';
-                    }
+                    document.querySelector('.nav-links').classList.remove('active');
                 }
             });
         });
@@ -1475,7 +1688,7 @@
         // Create digital particles
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
+            const particleCount = window.innerWidth < 768 ? 15 : 30;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -1500,7 +1713,7 @@
         // Create floating stars
         function createStars() {
             const starsContainer = document.getElementById('stars');
-            const starCount = 20;
+            const starCount = window.innerWidth < 768 ? 10 : 20;
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
@@ -1524,6 +1737,15 @@
         
         // Initialize effects
         document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            createStars();
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            // Recreate particles and stars on resize for better performance
+            document.getElementById('particles').innerHTML = '';
+            document.getElementById('stars').innerHTML = '';
             createParticles();
             createStars();
         });
